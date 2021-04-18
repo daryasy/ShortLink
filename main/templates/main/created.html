@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+ShortLink
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <div class="alert alert-primary text-center">
+            <a href="{{ short_url }}" target="_blank" class="mb-0 mx-5"> {{ short_url }} </a>
+        </div>
+    </div>
+</div>
+{% endblock%}

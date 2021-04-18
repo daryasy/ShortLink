@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Add the Link
+{% endblock %}
+
+{% block content %}
+<h3 class="pb-3">Make your link shorter </h3>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.initial_url }}<br>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <br>
+    <div class="row">
+        <div class="col-6 mt-3">Custom alias (optional):
+            {{ form.hash_alias }}
+        </div>
+        <div class="col-6 mt-3">Expiration time (optional):
+            {{ form.ttl }}
+        </div>
+    </div>
+    {% if form.hash_alias.errors %}
+    <div class="alert alert-danger">{{form.hash_alias.errors}}</div>
+    {% endif %}
+</form>
+
+{% endblock %}

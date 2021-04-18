@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+All Links
+{% endblock %}
+
+{% block content %}
+{% if links %}
+{% for el in links %}
+{% if el.active %}
+<div class="alert alert-warning mt-2 overflow-auto">
+    <div class="row">
+        <div class="col-8">
+            <h4>
+                <a href="{{ el.hash }}" target="_blank" class="text-warning">{{ el.hash }}</a>
+            </h4>
+        </div>
+        <div class="col-2">
+            <span class="col-">Сlicks: {{ el.clicks }}</span>
+        </div>
+        {% if el.ttl %}
+        <div class="col-2">
+            {{ el.ttl }} seconds
+        </div>
+        {% endif %}
+    </div>
+    <p>{{ el.initial_url }}</p>
+</div>
+{% else %}
+<div class="alert alert-danger mt-2 overflow-auto">
+    <div class="row">
+        <div class="col-8">
+            <h4>
+                <a href="{{ el.hash }}" target="_blank" class="text-danger">{{ el.hash }}</a>
+            </h4>
+        </div>
+        <div class="col-2">
+            <span class="col-">Сlicks: {{ el.clicks }}</span>
+        </div>
+        <div class="col-2">
+            <b>Expired</b>
+        </div>
+    </div>
+    <p>{{ el.initial_url }}</p>
+</div>
+{% endif %}
+{% endfor %}
+{% else %}
+<div class="alert alert-warning mt-2 overflow-auto">
+    <p>Don't have records yet</p>
+</div>
+{% endif %}
+{% endblock %}
+
